@@ -1,0 +1,14 @@
+#!/bin/bash
+#Set job requirements
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=1             
+#SBATCH --cpus-per-task=185
+#SBATCH -t 1-0
+#SBATCH -p genoa
+#SBATCH --chdir="/home/[name]/Tables_1-4_5000_simulations/JavaAlphaZero"
+#SBATCH --output=/home/[name]/Tables_1-4_5000_simulations/exp-%j.out
+#SBATCH --error=/home/[name]/Tables_1-4_5000_simulations/exp-%j.err
+module load 2023
+module load Java/17.0.6
+./gradlew -g $PWD run > build.log 2>&1 < /dev/null
+exit 0
