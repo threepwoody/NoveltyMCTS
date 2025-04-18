@@ -1,0 +1,2 @@
+# NoveltyMCTS
+Novelty-enhanced MCTS
