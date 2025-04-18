@@ -1,0 +1,5 @@
+
+# Project exclude paths
+/.gradle/
+/build
+/mxnet-native-cu110mkl-1.9.0.jar
