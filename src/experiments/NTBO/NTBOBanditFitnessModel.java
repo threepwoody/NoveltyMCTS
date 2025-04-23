@@ -55,11 +55,11 @@ public class NTBOBanditFitnessModel implements NTBOFitnessModel {
     }
 
     @Override
-    public synchronized double predictFitnessOfSolution(Map<String, String> solution, boolean output, boolean withExploration) {
+    public synchronized double predictFitnessOfSolution(Map<String, String> solution, boolean withExploration) {
         double result = 0;
-        if(output) {
+//        if(output) {
             System.out.println("predicting fitness for solution: " + solution);
-        }
+//        }
         for(Set<String> parameterSet : banditsForParameterSets.keySet()) {
             ParameterSettingBandit bandit = banditsForParameterSets.get(parameterSet);
             Map<String, String> settingsForBandit = new HashMap<>();
@@ -67,16 +67,16 @@ public class NTBOBanditFitnessModel implements NTBOFitnessModel {
                 settingsForBandit.put(parameter, solution.get(parameter));
             }
             double banditContributionToFitness = withExploration ? bandit.UCB1Value(settingsForBandit) : bandit.getAverageResult(settingsForBandit);
-            if(output) {
+//            if(output) {
                 System.out.println("from bandit " + settingsForBandit + ": " + banditContributionToFitness + " with samples: " + bandit.getSamples(settingsForBandit));
-            }
+//            }
             double weightForBandit = 1;
             result += banditContributionToFitness*weightForBandit;
         }
         result /= banditsForParameterSets.size();
-        if(output) {
+//        if(output) {
             System.out.println("predicted fitness: "+result);
-        }
+//        }
         return result;
     }
 

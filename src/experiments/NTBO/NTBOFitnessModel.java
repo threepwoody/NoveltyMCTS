@@ -10,7 +10,7 @@ public interface NTBOFitnessModel {
 
     void addEvaluationForSolution(double evaluation, Map<String, String> solution);
 
-    double predictFitnessOfSolution(Map<String, String> solution, boolean output, boolean withExploration);
+    double predictFitnessOfSolution(Map<String, String> solution, boolean withExploration);
 
     void removeEvaluationForSolution(double evaluation, Map<String, String> solution);
 

@@ -51,7 +51,7 @@ public class NTBO {
 
     public synchronized Map<String, String> bestSolution() {
         Set<Map<String, String>> resultCandidates = new HashSet<>(evaluatedSolutions);
-        Map<String, String> result = resultCandidates.stream().sorted(Comparator.comparingDouble(s -> -fitnessModel.predictFitnessOfSolution(s, false, false))).collect(Collectors.toList()).get(0);
+        Map<String, String> result = resultCandidates.stream().sorted(Comparator.comparingDouble(s -> -fitnessModel.predictFitnessOfSolution(s, false))).collect(Collectors.toList()).get(0);
         return result;
     }
 
